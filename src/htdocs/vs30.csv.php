@@ -13,7 +13,7 @@ $params['lngmax'] = safeParam('lngmax', 180);
 
 // query db
 $sql = 'SELECT `index`, `lat`, `lng`, `datum`, `net_sta`, `name`, `method`,
-  `vs30`, `d_max`, `contact`, `reference`, `url`, `s_geology`, `src_geology`,
+  `vs30`, `d_max`, `contact`, `reference`, `url`, `src_geology`,
   `comments`
     FROM vs30_us
     WHERE `lat` >= :latmin AND `lat` <= :latmax
