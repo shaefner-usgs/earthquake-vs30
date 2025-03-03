@@ -2,9 +2,6 @@
 'use strict';
 
 
-var Util = require('util/Util');
-
-
 /**
  * Factory for Greyscale base layer
  *
@@ -46,7 +43,7 @@ var GreyscaleLayer = function (provider, options) {
   };
 
   provider = provider || 'cartodb';
-  options = Util.extend(_providers[provider], options);
+  options = Object.assign(_providers[provider], options);
 
   _url = _providers[provider].url;
   _base = L.tileLayer(_url, options);

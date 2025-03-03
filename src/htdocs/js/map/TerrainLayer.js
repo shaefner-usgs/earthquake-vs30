@@ -2,9 +2,6 @@
 'use strict';
 
 
-var Util = require('util/Util');
-
-
 /**
  * Factory for ESRI Terrain base layer
  *
@@ -14,7 +11,7 @@ var Util = require('util/Util');
  * @return {L.TileLayer}
  */
 var TerrainLayer = function (options) {
-  options = Util.extend({
+  options = Object.assign({
     attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, ' +
       'Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance ' +
       'Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community',

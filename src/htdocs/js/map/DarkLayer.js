@@ -2,9 +2,6 @@
 'use strict';
 
 
-var Util = require('util/Util');
-
-
 /**
  * Factory for Dark base layer
  *
@@ -14,7 +11,7 @@ var Util = require('util/Util');
  * @return {L.TileLayer}
  */
 var DarkLayer = function (options) {
-  options = Util.extend({
+  options = Object.assign({
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">' +
       'OpenStreetMap</a> &copy; <a href="https://cartodb.com/attributions">' +
       'CartoDB</a>',

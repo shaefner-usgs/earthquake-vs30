@@ -2,9 +2,6 @@
 'use strict';
 
 
-var Util = require('util/Util');
-
-
 /**
  * Factory for Satellite base layer
  *
@@ -41,7 +38,7 @@ var SatelliteLayer = function (provider, options) {
   };
 
   provider = provider || 'esri';
-  options = Util.extend(_providers[provider], options);
+  options = Object.assign(_providers[provider], options);
 
   _url = _providers[provider].url;
   _base = L.tileLayer(_url, options);

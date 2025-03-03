@@ -2,8 +2,6 @@
 'use strict';
 
 
-var Util = require('util/Util');
-
 require('leaflet.markercluster');
 
 
@@ -47,10 +45,10 @@ var Vs30Layer = function (options) {
   _this = L.featureGroup();
 
   _initialize = function (options) {
-    options = Util.extend({}, _DEFAULTS, options);
+    options = Object.assign({}, _DEFAULTS, options);
 
     _bounds = new L.LatLngBounds();
-    _markerOptions = Util.extend({}, _MARKER_DEFAULTS, options.markerOptions);
+    _markerOptions = Object.assign({}, _MARKER_DEFAULTS, options.markerOptions);
 
     _this.cluster = new L.MarkerClusterGroup({
       showCoverageOnHover: false,
