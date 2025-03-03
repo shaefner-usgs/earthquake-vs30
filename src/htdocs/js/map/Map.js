@@ -135,6 +135,7 @@ var Map = function (options) {
     layers = _getMapLayers();
 
     _map = L.map(_el, {
+      attributionControl: false,
       layers: layers.defaults,
       scrollWheelZoom: false
     });
@@ -143,6 +144,7 @@ var Map = function (options) {
     bounds = _vs30.getBounds();
     _map.fitBounds(bounds);
 
+    L.control.attribution({ prefix: '' }).addTo(_map);
     L.control.layers(layers.baseLayers, layers.overlays).addTo(_map);
     L.control.scale().addTo(_map);
 
