@@ -1,5 +1,7 @@
-@import 'MarkerCluster.css';
-@import 'MarkerCluster.Default';
+@use 'sass:meta';
+
+@include meta.load-css('MarkerCluster.css');
+@include meta.load-css('MarkerCluster.Default');
 
 /* template's css is getting the way */
 input[type=checkbox], input[type=radio] {
