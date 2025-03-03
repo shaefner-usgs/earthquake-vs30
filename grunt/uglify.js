@@ -3,27 +3,21 @@
 
 var config = require('./config');
 
-
 var uglify = {
-
   options: {
-    mangle: true,
-    compress: {},
-    report: 'gzip'
+    banner: '/* uglified: <%= grunt.template.today("mm-dd-yyyy hh:MM:ss") %> */\n'
   },
 
   dist: {
     files: [{
-      expand: true,
       cwd: config.build + '/' + config.src,
+      dest: config.dist,
+      expand: true,
       src: [
-        '**/*.js',
-        '!**/bundle.js'
-      ],
-      dest: config.dist
+        'htdocs/**/*.js'
+      ]
     }]
   }
-
 };
 
 

@@ -1,65 +1,42 @@
 'use strict';
 
+
 module.exports = function (grunt) {
+  var gruntConfig = require('./grunt');
 
-  var gruntConfig = require('./gruntconfig');
+  // Load all tasks matching patterns ['grunt-*', '@*/grunt-*'] in package.json
+  require('load-grunt-tasks')(grunt);
 
-  gruntConfig.tasks.forEach(grunt.loadNpmTasks);
   grunt.initConfig(gruntConfig);
 
+  // Only lint the file that changed
   grunt.event.on('watch', function (action, filepath) {
-    // Only lint the file that actually changed
-    grunt.config(['eslint', 'scripts'], filepath);
+    grunt.config('eslint.build.src', filepath);
   });
-
-  grunt.registerTask('test', [
-    'build',
-    'connect:test',
-    'mocha_phantomjs'
-  ]);
 
   grunt.registerTask('build', [
     'clean:build',
-    'eslint:scripts',
-    'eslint:tests',
+    'eslint',
     'browserify',
+    'sass',
     'postcss:build',
-    'copy:build',
     'copy:leaflet',
-    'copy:test'
-  ]);
-
-  grunt.registerTask('builddist', [
-    'build',
-    'clean:dist',
-    'copy:dist',
-    'postcss:dist',
-    'uglify'
-  ]);
-
-  grunt.registerTask('rundist', [
-    'configureRewriteRules',
-    'configureProxies:dist',
-    'connect:template',
-    'connect:dist'
+    'copy:build',
+    'connect:template'
   ]);
 
   grunt.registerTask('dist', [
-    'builddist',
-    'rundist'
+    'build',
+    'clean:dist',
+    'postcss:dist',
+    'uglify',
+    'copy:dist',
+    'connect:dist'
   ]);
 
   grunt.registerTask('default', [
     'build',
-    'configureRewriteRules',
-    'configureProxies:dev',
-    //'configureProxies:test',
-    'connect:template',
-    'connect:dev',
-    //'connect:test',
-    //'connect:example',
-    //'mocha_phantomjs',
+    'connect:build',
     'watch'
   ]);
-
 };
