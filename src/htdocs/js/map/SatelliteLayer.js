@@ -13,8 +13,8 @@
  */
 var SatelliteLayer = function (provider, options) {
   var _base,
-      _places,
-      _placesUrl,
+      // _places,
+      // _placesUrl,
       _providers,
       _transportation,
       _transportationUrl,
@@ -45,12 +45,12 @@ var SatelliteLayer = function (provider, options) {
 
   // Esri satellite layer doesn't inlcude labels; add them
   if (provider === 'esri') {
-    _placesUrl = 'https://{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}';
-    _places = L.tileLayer(_placesUrl, options);
+    // _placesUrl = 'https://{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}';
+    // _places = L.tileLayer(_placesUrl, options);
     _transportationUrl = 'https://{s}.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}';
     _transportation = L.tileLayer(_transportationUrl, options);
 
-    return L.layerGroup([_base, _places, _transportation]);
+    return L.layerGroup([_base/*, _places*/, _transportation]);
   } else {
     return _base;
   }
